@@ -46,10 +46,7 @@ db.serialize(() => {
     // Cerrar la conexión a la base de datos
 }).wait((err, row) => {});
 
-// Puerto en el que se ejecuta la aplicación
-app.listen(8080, () => {
-    console.log(`La aplicación está funcionando en http://localhost:${port}`);
-});
+
 // Ruta de inicio de sesión (vulnerable a ataques de fuerza bruta)
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -58,13 +55,11 @@ app.post('/login', (req, res) => {
             if (err) {
             console.error(err.message);
             res.status(500).send('Error en la consulta de la base de datos.');cv   
-        } else {
-            if (row) {
+        } else if (row) {
                 res.send('Inicio de sesión exitoso!');
             } else {
                 res.status(401).send('Credenciales incorrectas.');
             }
-        }
     });
 });
 
@@ -86,11 +81,7 @@ app.get('/', (req, res) => {
 });
 
 // Puerto en el que se ejecuta la aplicación
-const port = 3000;
-app.listen(port, () => {
+app.listen(8080, () => {
     console.log(`La aplicación está funcionando en http://localhost:${port}`);
 });
-
-
-
 
