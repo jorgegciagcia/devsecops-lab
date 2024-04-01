@@ -1,0 +1,15 @@
+{
+    "name": "NodeJs Dev Container",
+    "dockerFile": "Dockerfile",
+    "containerUser": "dev",
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.node-debug2"
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/zsh"
+    },
+    "runArgs": [
+        "--network=host"
+    ]
+}
